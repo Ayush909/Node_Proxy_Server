@@ -3,8 +3,8 @@ const cityInput = document.querySelector('#city-input');
 const weatherDisplay = document.querySelector('.weather');
 
 const fetchWeather = async (city) => {
-    // console.log(city)
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=708da498299e94c381bf408beb152886`);
+
+    const response = await fetch(`/api/?q=${city}`);
 
     const data = await response.json();
 
@@ -13,7 +13,6 @@ const fetchWeather = async (city) => {
         return;
     }
 
-    console.log(data);
     const displayData = {
         cityname : data.name,
         temp : data.main.temp
@@ -39,14 +38,4 @@ weatherForm.addEventListener('submit', (e)=>{
 
 })
 
-
-const testfun = () => {
-    const url = new URL("https://test.com?a=1&b=2&a=3");
-    const params = new URLSearchParams(url.search);
-
-    console.log(params.getAll('a'));
-    params.append('d','4');
-    console.log(params.toString());
-}
-
-testfun();
+fetchWeather('Kolkata');

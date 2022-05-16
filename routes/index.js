@@ -19,7 +19,7 @@ router.get('/',async (req,res)=>{
     
         const apiRes = await needle('get',`${API_BASE_URL}?${params}`)
     
-        console.log(apiRes.body);
+        // console.log(apiRes.body);
         const data = apiRes.body;
         res.status(200).json(data);
     }catch(error){
