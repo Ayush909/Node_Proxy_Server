@@ -9,7 +9,7 @@ const API_KEY = process.env.API_KEY;
 
 router.get('/',async (req,res)=>{
 
-    console.log(url.parse(req.url,true).query);
+    // console.log(url.parse(req.url,true).query);
 
     try{
         const params = new URLSearchParams({
