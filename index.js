@@ -14,7 +14,7 @@ const limiter = rateLimit({
 
 app.use(express.static('public'))
 
-app.use(limiter)
+// app.use(limiter)
 app.use(cors());
 
 app.use('/api',require('./routes/index'))
