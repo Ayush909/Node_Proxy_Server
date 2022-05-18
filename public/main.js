@@ -2,6 +2,11 @@ const weatherForm = document.getElementById('weather-form');
 const cityInput = document.querySelector('#city-input');
 const weatherDisplay = document.querySelector('.weather');
 
+// Convert Kelvin to Fahrenheit
+const kelvinToCelsius = (temp) => {
+    return (temp - 273.15).toFixed(0);
+}
+
 const fetchWeather = async (city) => {
 
     const response = await fetch(`/api/?q=${city}`);
@@ -15,16 +20,15 @@ const fetchWeather = async (city) => {
 
     const displayData = {
         cityname : data.name,
-        temp : data.main.temp
+        temp : kelvinToCelsius(data.main.temp)
     };
-
     addDisplay(displayData);
 }
 
 const addDisplay = (data) => {
     weatherDisplay.innerHTML = `
     <h1>Weather in ${data.cityname}</h1>
-    <h2>${data.temp} degree</h2>`;
+    <h2>${data.temp} \xB0 C</h2>`;
     cityInput.value = '';
 }
 
